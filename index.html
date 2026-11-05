@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ishwardi Mart | অনলাইনে মুদি বাজার, ঈশ্বরদী</title>
+<meta name="description" content="Ishwardi Mart: চাল, ডাল, তেল, মসলা ও নিত্যপ্রয়োজনীয় পণ্য। কার্টে যোগ করুন, WhatsApp-এ অর্ডার করুন।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#17432F;--green2:#235C42;--leaf:#E4EFE4;--paper:#F5F8F2;--tur:#F2B01E;--ink:#1B2620;--muted:#5B6B61;--line:#D8E2D8;--wa:#1FA855;--red:#C0392B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hind Siliguri","Noto Sans Bengali","Kalpurush",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px}
+button{font:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tur);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+h2{font-size:clamp(1.5rem,4vw,2rem);color:var(--green);line-height:1.3}
+
+/* header */
+header{background:var(--green);color:#fff;position:sticky;top:0;z-index:40}
+.bar{display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 0}
+.brand{font-weight:700;font-size:1.25rem;text-decoration:none;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand i{width:28px;height:28px;border-radius:50% 50% 50% 7px;background:var(--tur);display:inline-block}
+.search{flex:1;min-width:0}
+.search input{width:100%;font:inherit;border:0;border-radius:999px;padding:9px 18px;background:#fff;color:var(--ink)}
+.cartbtn{background:var(--tur);color:var(--ink);border:0;border-radius:999px;padding:9px 18px;font-weight:600;white-space:nowrap;display:flex;gap:8px;align-items:center}
+.cartbtn b{background:var(--green);color:#fff;border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;padding:0 6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:11px 22px;font-weight:600;text-decoration:none;background:var(--wa);color:#fff;transition:background .15s}
+.btn:hover{background:#188F48}
+.btn.alt{background:var(--tur);color:var(--ink)}
+.btn.alt:hover{background:#E0A010}
+
+/* hero strip */
+.hero{background:var(--green);color:#fff;padding:6px 0 30px}
+.hero .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.hero h1{font-size:clamp(1.5rem,4.5vw,2.4rem);line-height:1.3;max-width:20ch}
+.hero p{opacity:.9;margin-top:4px}
+.perks{display:flex;gap:10px;flex-wrap:wrap}
+.perks span{background:rgba(255,255,255,.12);border-radius:999px;padding:5px 16px;font-size:.92rem}
+
+/* shop layout */
+.shop{display:grid;grid-template-columns:230px 1fr;gap:24px;padding:26px 0 56px;align-items:start}
+.side{position:sticky;top:80px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
+.side h3{font-size:.95rem;color:var(--muted);padding:6px 10px;font-weight:500}
+.cat{display:flex;width:100%;justify-content:space-between;align-items:center;gap:8px;text-align:left;border:0;background:transparent;padding:9px 12px;border-radius:9px;color:var(--ink)}
+.cat:hover{background:var(--leaf)}
+.cat[aria-pressed="true"]{background:var(--green);color:#fff}
+.cat small{opacity:.7}
+.head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:10px}
+.head h2{font-size:1.4rem}
+.head span{color:var(--muted);font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.pic{height:104px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;background:var(--leaf)}
+.card h3{font-size:1rem;line-height:1.35;min-height:2.7em}
+.card select{width:100%;font:inherit;font-size:.92rem;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.price{font-size:1.25rem;font-weight:700;color:var(--green)}
+.add{width:100%;border:1.5px solid var(--green);background:#fff;color:var(--green);font-weight:600;border-radius:10px;padding:7px}
+.add:hover{background:var(--green);color:#fff}
+.step{display:flex;align-items:center;justify-content:space-between;background:var(--green);color:#fff;border-radius:10px;padding:3px}
+.step button{width:36px;height:34px;border:0;border-radius:8px;background:rgba(255,255,255,.16);color:#fff;font-size:1.2rem;line-height:1}
+.step button:hover{background:rgba(255,255,255,.3)}
+.empty{grid-column:1/-1;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:30px;text-align:center;color:var(--muted)}
+
+/* sections */
+.why{background:var(--leaf);padding:56px 0}
+.why .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px;border-top:2px solid var(--green)}
+.why .grid4 div{padding:20px 20px 4px 0}
+.why h3{color:var(--green);font-size:1.1rem}
+.why p{color:var(--muted);font-size:.96rem}
+.rv{padding:56px 0}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px}
+blockquote{background:#fff;border-left:5px solid var(--tur);border-radius:0 14px 14px 0;padding:18px 20px}
+blockquote p{margin-bottom:10px}
+.stars{color:var(--tur);letter-spacing:2px}
+blockquote cite{font-style:normal;color:var(--muted);font-size:.92rem}
+blockquote cite b{color:var(--ink)}
+.band{background:var(--green);color:#fff;text-align:center;padding:48px 16px}
+.band h2{color:#fff;margin-bottom:6px}
+.band p{opacity:.9;margin-bottom:18px}
+footer{background:#0F2E20;color:#CFE0D3;text-align:center;padding:20px 16px;font-size:.92rem}
+
+/* cart drawer */
+.veil{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none}
+.veil.on{display:block}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:60;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--green);color:#fff}
+.dh button{background:none;border:0;color:#fff;font-size:1.6rem;line-height:1}
+.items{flex:1;overflow:auto;padding:6px 18px}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row .n{font-weight:600;line-height:1.3}
+.row .w{color:var(--muted);font-size:.88rem}
+.row .lt{font-weight:700;color:var(--green);text-align:right}
+.row .ctl{display:flex;align-items:center;gap:8px;margin-top:4px}
+.row .ctl button{width:30px;height:30px;border:1.5px solid var(--line);background:#fff;border-radius:8px}
+.row .ctl .rm{width:auto;padding:0 10px;color:var(--red);border-color:transparent;font-size:.88rem}
+.df{padding:14px 18px;border-top:1px solid var(--line);display:grid;gap:8px;background:var(--paper)}
+.df input,.df textarea{width:100%;font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;resize:none}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem}
+.df .btn{width:100%}
+.df .btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
+.df small{color:var(--muted);text-align:center}
+.float{position:fixed;left:14px;bottom:14px;z-index:30;box-shadow:0 8px 22px rgba(0,0,0,.3)}
+
+@media(max-width:820px){
+  .shop{grid-template-columns:1fr;gap:14px;padding-top:18px}
+  .side{position:static;display:flex;overflow-x:auto;gap:8px;padding:8px;border-radius:12px}
+  .side h3{display:none}
+  .cat{width:auto;white-space:nowrap;border:1.5px solid var(--line);border-radius:999px;padding:5px 14px}
+  .cat small{display:none}
+  .bar{flex-wrap:wrap}
+  .search{order:3;flex-basis:100%}
+  .cartbtn span{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><i></i>Ishwardi Mart</a>
+    <div class="search"><input id="q" type="search" placeholder="পণ্য খুঁজুন, যেমন: চাল, ডাল, তেল" aria-label="পণ্য খুঁজুন"></div>
+    <button class="cartbtn" id="openCart" aria-label="কার্ট খুলুন">🛒 <span id="hTotal">৳০</span> <b id="hCount">০</b></button>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>ঈশ্বরদীর নিত্যপ্রয়োজনীয় বাজার, এক জায়গায়</h1>
+      <p>পণ্য বেছে কার্টে যোগ করুন, তারপর WhatsApp-এ অর্ডার পাঠান।</p>
+    </div>
+    <div class="perks"><span>ন্যায্য দাম</span><span>পছন্দমতো ওজন</span><span>WhatsApp-এ অর্ডার</span></div>
+  </div>
+</div>
+
+<main class="wrap shop" id="shop">
+  <nav class="side" id="side" aria-label="ক্যাটাগরি"><h3>ক্যাটাগরি</h3></nav>
+  <section aria-live="polite">
+    <div class="head"><h2 id="title">সব পণ্য</h2><span id="count"></span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <h2>কেন আমাদের বেছে নেবেন</h2>
+    <div class="grid4">
+      <div><h3>খাঁটি ও তাজা পণ্য</h3><p>প্রতিটি পণ্য নিজে যাচাই করে তুলি। মেয়াদ আর মান দুটোই দেখা হয়।</p></div>
+      <div><h3>ন্যায্য দাম</h3><p>ওজন অনুযায়ী পরিষ্কার দাম। ঠিকমতো মাপ, কোনো লুকানো খরচ নেই।</p></div>
+      <div><h3>পছন্দমতো ওজন</h3><p>যতটুকু দরকার ততটুকুই কিনুন। এক কেজি থেকে পঁচিশ কেজি পর্যন্ত।</p></div>
+      <div><h3>সহজ অর্ডার</h3><p>কার্ট সাজিয়ে এক ক্লিকে WhatsApp-এ পাঠান। আমরা সব গুছিয়ে রাখি।</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rv" id="reviews">
+  <div class="wrap">
+    <h2>কাস্টমারদের মতামত</h2>
+    <div class="rev">
+      <blockquote><div class="stars" aria-label="৫ তারকা">★★★★★</div><p>চালের মান ভালো, ওজনেও কোনো গরমিল পাইনি। প্রতি মাসের বাজার এখন এখান থেকেই করি।</p><cite><b>রফিকুল ইসলাম</b>, ঈশ্বরদী</cite></blockquote>
+      <blockquote><div class="stars" aria-label="৫ তারকা">★★★★★</div><p>কার্ট সাজিয়ে WhatsApp-এ পাঠালাম, কিছুক্ষণের মধ্যেই সব রেডি। ব্যস্ত দিনে খুব কাজে লাগে।</p><cite><b>সালমা খাতুন</b>, ঈশ্বরদী</cite></blockquote>
+      <blockquote><div class="stars" aria-label="৫ তারকা">★★★★★</div><p>মসলার ঘ্রাণ আর সতেজতা আলাদা। দামও আশপাশের দোকানের তুলনায় ঠিকঠাক।</p><cite><b>মাহবুব আলম</b>, ঈশ্বরদী</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <h2>কিছু খুঁজে পাচ্ছেন না?</h2>
+  <p>সরাসরি জানান, আমরা জোগাড় করে দেব। ফোন / WhatsApp: <b id="phone"></b></p>
+  <a class="btn alt" id="waGeneral" target="_blank" rel="noopener">WhatsApp-এ মেসেজ করুন</a>
+</div>
+<footer>&copy; <span id="yr"></span> Ishwardi Mart, ঈশ্বরদী, পাবনা। সর্বস্বত্ব সংরক্ষিত।</footer>
+
+<a class="btn float" id="waFloat" target="_blank" rel="noopener">WhatsApp</a>
+
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer" aria-label="কার্ট" aria-hidden="true">
+  <div class="dh"><b>আপনার কার্ট</b><button id="closeCart" aria-label="কার্ট বন্ধ করুন">&times;</button></div>
+  <div class="items" id="items"></div>
+  <div class="df">
+    <div class="tot"><span>মোট</span><span id="dTotal">৳০</span></div>
+    <input id="cName" placeholder="আপনার নাম" aria-label="আপনার নাম" autocomplete="name">
+    <textarea id="cAddr" rows="2" placeholder="ডেলিভারির ঠিকানা" aria-label="ডেলিভারির ঠিকানা" autocomplete="street-address"></textarea>
+    <a class="btn" id="waOrder" target="_blank" rel="noopener" aria-disabled="true">WhatsApp-এ অর্ডার করুন</a>
+    <small>অর্ডার নিশ্চিত করতে WhatsApp-এ আমরা আপনার সঙ্গে কথা বলব।</small>
+  </div>
+</aside>
+
+<script>
+/* ====== এখানে নিজের তথ্য বদলান ====== */
+var WA_NUMBER = "8801737005857";   // 01737005857 (বাংলাদেশ কোড 880 সহ)
+var PHONE_SHOW = "01737005857";
+
+/* w: [ওজন, দাম ৳] — দামগুলো নমুনা, নিজের দাম বসিয়ে নিন */
+var PRODUCTS = [
+  {cat:"চাল ও আটা", e:"🍚", name:"মিনিকেট চাল", w:[["১ কেজি",78],["৫ কেজি",385],["১০ কেজি",760],["২৫ কেজি",1880]]},
+  {cat:"চাল ও আটা", e:"🌾", name:"নাজিরশাইল চাল", w:[["১ কেজি",72],["৫ কেজি",355],["১০ কেজি",700],["২৫ কেজি",1740]]},
+  {cat:"চাল ও আটা", e:"🫓", name:"আটা", w:[["১ কেজি",55],["২ কেজি",108],["৫ কেজি",265]]},
+  {cat:"চাল ও আটা", e:"🍞", name:"ময়দা", w:[["১ কেজি",62],["২ কেজি",122]]},
+  {cat:"ডাল", e:"🫘", name:"মসুর ডাল", w:[["৫০০ গ্রাম",65],["১ কেজি",125],["২ কেজি",245]]},
+  {cat:"ডাল", e:"🟢", name:"মুগ ডাল", w:[["৫০০ গ্রাম",85],["১ কেজি",165]]},
+  {cat:"ডাল", e:"🟡", name:"ছোলা", w:[["৫০০ গ্রাম",48],["১ কেজি",95]]},
+  {cat:"ডাল", e:"🫛", name:"মটর ডাল", w:[["৫০০ গ্রাম",40],["১ কেজি",78]]},
+  {cat:"তেল ও ঘি", e:"🛢️", name:"সয়াবিন তেল", w:[["১ লিটার",178],["২ লিটার",352],["৫ লিটার",870]]},
+  {cat:"তেল ও ঘি", e:"🌻", name:"সরিষার তেল", w:[["৫০০ মিলি",150],["১ লিটার",295]]},
+  {cat:"তেল ও ঘি", e:"🧈", name:"ঘি", w:[["২০০ গ্রাম",230],["৫০০ গ্রাম",560]]},
+  {cat:"মসলা", e:"🟠", name:"হলুদ গুঁড়া", w:[["১০০ গ্রাম",38],["২৫০ গ্রাম",92],["৫০০ গ্রাম",180]]},
+  {cat:"মসলা", e:"🌶️", name:"মরিচ গুঁড়া", w:[["১০০ গ্রাম",55],["২৫০ গ্রাম",135],["৫০০ গ্রাম",265]]},
+  {cat:"মসলা", e:"🌿", name:"জিরা", w:[["১০০ গ্রাম",60],["২৫০ গ্রাম",145]]},
+  {cat:"চিনি, লবণ ও চা", e:"🍬", name:"চিনি", w:[["১ কেজি",125],["২ কেজি",248],["৫ কেজি",615]]},
+  {cat:"চিনি, লবণ ও চা", e:"🧂", name:"আয়োডিনযুক্ত লবণ", w:[["১ কেজি",42],["২ কেজি",82]]},
+  {cat:"চিনি, লবণ ও চা", e:"🍵", name:"চা পাতা", w:[["২০০ গ্রাম",90],["৫০০ গ্রাম",215]]},
+  {cat:"ডিম ও সবজি", e:"🥚", name:"ডিম", w:[["৬ পিস",78],["১২ পিস",150],["৩০ পিস",365]]},
+  {cat:"ডিম ও সবজি", e:"🧅", name:"পেঁয়াজ", w:[["১ কেজি",70],["২ কেজি",138],["৫ কেজি",340]]},
+  {cat:"ডিম ও সবজি", e:"🥔", name:"আলু", w:[["১ কেজি",40],["৫ কেজি",195]]}
+];
+/* ===================================== */
+
+var ALL = "সব পণ্য";
+var CATS = [ALL].concat(PRODUCTS.map(function(p){return p.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
+var bn = new Intl.NumberFormat("bn-BD");
+var taka = function(n){return "৳" + bn.format(n)};
+var $ = function(id){return document.getElementById(id)};
+var cur = ALL, term = "", sel = PRODUCTS.map(function(){return 0}), cart = {}, updaters = [];
+
+function save(){ try{ localStorage.setItem("im_cart", JSON.stringify(cart)); }catch(e){} }
+(function load(){
+  try{
+    var c = JSON.parse(localStorage.getItem("im_cart") || "{}");
+    Object.keys(c).forEach(function(k){
+      var a = k.split("-"), p = PRODUCTS[a[0]];
+      if(p && p.w[a[1]] && c[k] > 0) cart[k] = c[k];
+    });
+  }catch(e){}
+})();
+
+function wa(msg){ return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg); }
+function setQty(pi, wi, q){
+  var k = pi + "-" + wi;
+  if(q <= 0) delete cart[k]; else cart[k] = Math.min(q, 99);
+  save(); refresh();
+}
+
+/* ক্যাটাগরি সাইডবার */
+function renderSide(){
+  var s = $("side"); Array.prototype.slice.call(s.querySelectorAll(".cat")).forEach(function(n){n.remove()});
+  CATS.forEach(function(c){
+    var n = PRODUCTS.filter(function(p){return c===ALL || p.cat===c}).length;
+    var b = document.createElement("button"); b.className = "cat"; b.setAttribute("aria-pressed", c===cur);
+    b.innerHTML = "<span></span><small>" + bn.format(n) + "</small>"; b.firstChild.textContent = c;
+    b.onclick = function(){ cur = c; renderSide(); renderGrid(); };
+    s.appendChild(b);
+  });
+}
+
+/* পণ্যের কার্ড */
+function buildCard(pi){
+  var p = PRODUCTS[pi], card = document.createElement("article"); card.className = "card";
+  card.innerHTML = '<div class="pic" aria-hidden="true"></div><h3></h3><select></select><div class="price"></div><div class="act"></div>';
+  card.querySelector(".pic").textContent = p.e;
+  card.querySelector("h3").textContent = p.name;
+  var s = card.querySelector("select"); s.setAttribute("aria-label", p.name + " এর ওজন");
+  p.w.forEach(function(w,i){ var o = document.createElement("option"); o.value = i; o.textContent = w[0]; s.appendChild(o); });
+  s.value = sel[pi];
+  s.onchange = function(){ sel[pi] = +s.value; update(); };
+  var price = card.querySelector(".price"), act = card.querySelector(".act");
+  function update(){
+    var wi = sel[pi], q = cart[pi + "-" + wi] || 0;
+    price.textContent = taka(p.w[wi][1]);
+    act.innerHTML = "";
+    if(!q){
+      var a = document.createElement("button"); a.className = "add"; a.textContent = "Add to cart";
+      a.onclick = function(){ setQty(pi, wi, 1); };
+      act.appendChild(a);
+    } else {
+      act.innerHTML = '<div class="step"><button aria-label="কমান">&minus;</button><b></b><button aria-label="বাড়ান">+</button></div>';
+      act.querySelector("b").textContent = bn.format(q);
+      var bs = act.querySelectorAll("button");
+      bs[0].onclick = function(){ setQty(pi, wi, q - 1); };
+      bs[1].onclick = function(){ setQty(pi, wi, q + 1); };
+    }
+  }
+  update(); updaters.push(update);
+  return card;
+}
+
+function renderGrid(){
+  var g = $("grid"); g.innerHTML = ""; updaters = [];
+  var t = term.trim().toLowerCase(), n = 0;
+  PRODUCTS.forEach(function(p,i){
+    if((cur===ALL || p.cat===cur) && (!t || p.name.toLowerCase().indexOf(t) > -1 || p.cat.toLowerCase().indexOf(t) > -1)){ g.appendChild(buildCard(i)); n++; }
+  });
+  if(!n){ var d = document.createElement("div"); d.className = "empty"; d.textContent = "এই নামে কোনো পণ্য পাওয়া যায়নি। WhatsApp-এ জানান, আমরা জোগাড় করে দেব।"; g.appendChild(d); }
+  $("title").textContent = cur; $("count").textContent = bn.format(n) + "টি পণ্য";
+}
+
+/* কার্ট */
+function renderCart(){
+  var keys = Object.keys(cart), total = 0, count = 0, box = $("items"), lines = [];
+  box.innerHTML = "";
+  if(!keys.length){ box.innerHTML = '<p class="empty" style="margin-top:20px">কার্ট খালি। পছন্দের পণ্য Add to cart করুন।</p>'; }
+  keys.forEach(function(k){
+    var a = k.split("-"), p = PRODUCTS[a[0]], w = p.w[a[1]], q = cart[k], lt = w[1] * q;
+    total += lt; count += q;
+    lines.push("• " + p.name + " (" + w[0] + ") × " + bn.format(q) + " = " + taka(lt));
+    var r = document.createElement("div"); r.className = "row";
+    r.innerHTML = '<div><div class="n"></div><div class="w"></div></div><div class="lt"></div><div class="ctl"><button aria-label="কমান">&minus;</button><span></span><button aria-label="বাড়ান">+</button><button class="rm">সরান</button></div>';
+    r.querySelector(".n").textContent = p.name;
+    r.querySelector(".w").textContent = w[0] + " · " + taka(w[1]);
+    r.querySelector(".lt").textContent = taka(lt);
+    r.querySelector(".ctl span").textContent = bn.format(q);
+    var bs = r.querySelectorAll("button");
+    bs[0].onclick = function(){ setQty(+a[0], +a[1], q - 1); };
+    bs[1].onclick = function(){ setQty(+a[0], +a[1], q + 1); };
+    bs[2].onclick = function(){ setQty(+a[0], +a[1], 0); };
+    box.appendChild(r);
+  });
+  $("hTotal").textContent = taka(total); $("hCount").textContent = bn.format(count); $("dTotal").textContent = taka(total);
+  var o = $("waOrder");
+  if(!keys.length){ o.setAttribute("aria-disabled","true"); o.removeAttribute("href"); }
+  else { o.setAttribute("aria-disabled","false"); o.dataset.lines = lines.join("\n"); o.dataset.total = taka(total); }
+}
+function refresh(){ updaters.forEach(function(u){u()}); renderCart(); }
+
+$("waOrder").addEventListener("click", function(e){
+  if(this.getAttribute("aria-disabled") === "true"){ e.preventDefault(); return; }
+  var nm = $("cName").value.trim(), ad = $("cAddr").value.trim();
+  var msg = "আসসালামু আলাইকুম, Ishwardi Mart থেকে অর্ডার করতে চাই:\n\n" + this.dataset.lines + "\n\nমোট: " + this.dataset.total +
+    (nm ? "\nনাম: " + nm : "") + (ad ? "\nঠিকানা: " + ad : "");
+  this.href = wa(msg);
+});
+
+function openCart(on){
+  $("drawer").classList.toggle("on", on); $("veil").classList.toggle("on", on);
+  $("drawer").setAttribute("aria-hidden", !on);
+  if(on) $("closeCart").focus(); else $("openCart").focus();
+}
+$("openCart").onclick = function(){ openCart(true); };
+$("closeCart").onclick = $("veil").onclick = function(){ openCart(false); };
+document.addEventListener("keydown", function(e){ if(e.key === "Escape") openCart(false); });
+$("q").addEventListener("input", function(){ term = this.value; renderGrid(); });
+
+var hello = "আসসালামু আলাইকুম, Ishwardi Mart সম্পর্কে একটি প্রশ্ন ছিল।";
+$("waGeneral").href = $("waFloat").href = wa(hello);
+$("phone").textContent = PHONE_SHOW;
+$("yr").textContent = String(new Date().getFullYear()).replace(/\d/g, function(d){return "০১২৩৪৫৬৭৮৯"[d]});
+renderSide(); renderGrid(); renderCart();
+</script>
+</body>
+</html>
